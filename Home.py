@@ -38,7 +38,9 @@ with st.sidebar.form(key='my_form'):
 
     st.info("""
             Pinpoint your location and generate a preliminary map of the solar efficiency.
-            """, icon="🗒️")
+            """
+            # , icon="🗒️"
+            )
 
     # country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
 
