@@ -4,23 +4,8 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 
-############ add logo
-def add_logo():
-    st.markdown(
-        """
-        <style>
-            [data-testid="stSidebarNav"] {
-                background-image: "img/too good to code.png";
-                background-repeat: no-repeat;
-                padding-top: 120px;
-                background-position: 20px 20px;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-add_logo()
+from streamlit_extras.app_logo import add_logo
+add_logo("img/too good to code.png", layout="centered")
 
 st.set_page_config(layout="wide",
                         page_title="Solar Efficiency",

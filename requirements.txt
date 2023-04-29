@@ -1,6 +1,7 @@
 --find-links=https://girder.github.io/large_image_wheels GDAL
 # cartopy
 streamlit
+streamlit-extras
 snowflake-connector-python
 folium
 geemap[extra]
