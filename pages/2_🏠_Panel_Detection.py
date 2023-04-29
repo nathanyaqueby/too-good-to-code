@@ -117,4 +117,4 @@ with st.sidebar.form(key='download'):
 st.sidebar.markdown("---")
 st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
 
-Map.to_streamlit(height=1000)
+Map.to_streamlit(height=700)
