@@ -10,6 +10,8 @@ st.set_page_config(layout="wide",
                         initial_sidebar_state="expanded"
                         )
 
+st.sidebar.image("img/too good to code.png", use_column_width=True)
+
 st.title("Genistat's Solar Challenge")
 
 # create 3x3 grid layout
@@ -55,3 +57,6 @@ with col3:
     st.info("""
         And some more text here ...
         """)
+
+st.markdown("---")
+
