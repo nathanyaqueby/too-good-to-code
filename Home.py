@@ -76,10 +76,10 @@ st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nath
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
-    st.map(map_data, zoom=19, use_container_width=True) 
+    st.map(map_data, zoom=16, use_container_width=True) 
 
     # add three columns to the main page with explanations on the solar efficiency
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3, gap=3)
 
     col1.markdown("### Solar Efficiency")
     col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun. It is a function of the latitude, the longitude, the number of panels and the efficiency of the panels.")
