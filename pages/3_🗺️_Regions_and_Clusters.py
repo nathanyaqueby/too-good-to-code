@@ -65,4 +65,4 @@ m.add_points_from_xy(
     add_legend=True,
 )
 
-m.to_streamlit(height=700)
+m.to_streamlit(height=700, bidirectional=True)
