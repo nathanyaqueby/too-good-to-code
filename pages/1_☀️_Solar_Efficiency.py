@@ -4,6 +4,24 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 
+############ add logo
+def add_logo():
+    st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: "img/too good to code.png";
+                background-repeat: no-repeat;
+                padding-top: 120px;
+                background-position: 20px 20px;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+add_logo()
+
 st.set_page_config(layout="wide",
                         page_title="Solar Efficiency",
                         page_icon="☀️",
