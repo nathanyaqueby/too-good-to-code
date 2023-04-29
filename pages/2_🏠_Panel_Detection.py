@@ -59,9 +59,7 @@ st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nath
 def ee_authenticate(token_name="EARTHENGINE_TOKEN"):
     geemap.ee_initialize(token_name=token_name)
 
-
 col1, col2 = st.columns([8, 2])
-
 
 @st.cache_data
 def read_data(url):
