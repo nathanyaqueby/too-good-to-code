@@ -80,7 +80,7 @@ with st.sidebar.form(key='tech_support'):
     label="Twitter",
     icon="twitter",
     url="https://twitter.com/neuronaiAustria",
-    write="Twitter"
+    write="  Twitter"
     )
 
     mention(
@@ -95,14 +95,14 @@ with st.sidebar.form(key='tech_support'):
         st.write("Submitted!")
 
 # download section
-with st.sidebar.form(key='download'):
-    st.title("Solar Efficiency Report")
+# with st.sidebar.form(key='download'):
+#     st.title("Solar Efficiency Report")
 
-    st.markdown("Save all the results of the solar efficiency analysis and the visualizations in a PDF file.")
+#     st.markdown("Save all the results of the solar efficiency analysis and the visualizations in a PDF file.")
 
-    # create a submit button to download the retrained model
-    if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
-        st.write("Downloaded!")
+#     # create a submit button to download the retrained model
+#     if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
+#         st.write("Downloaded!")
 
 # st.sidebar.markdown("---")
 st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
