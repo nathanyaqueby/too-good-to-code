@@ -20,14 +20,14 @@ col1, col2, col3 = st.beta_columns(3)
 with col1:
     st.image("img/solar/1.png", use_column_width=True)
 
-    st.markdown("### How many German roofs must be equipped with solar panels to substitute all of Germany's fossil energy sources?")
+    st.subheader("How many German roofs must be equipped with solar panels to substitute all of Germany's fossil energy sources?")
 
     st.markdown("""
     Add some text here
     """)
 
     st.info("""
-        The total energy consumption of Germany in 2019 was 2,640 TWh.
+        The total energy consumption of Germany in 2019 was 2,640 TWh ([Source](https://www.energy-charts.de/energy_pie.htm?year=2019&source=all-sources&period=annual&week=52&mode=relative&external=cal-external)).
         """)
 
 with col2:
