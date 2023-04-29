@@ -13,6 +13,47 @@ st.set_page_config(layout="wide",
 st.title("Genistat's Solar Challenge")
 # st.markdown("## Welcome to Too Good To Code!")
 
+############# function to create the map
+def create_map(radius, city):
+
+    # get the latitude and longitude of the city
+    lat = data["lat"].loc[data["city"] == city].values[0]
+    lon = data["lng"].loc[data["city"] == city].values[0]
+
+    chart_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [lat, lon],
+    columns=['lat', 'lon'])
+
+    st.pydeck_chart(pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+            latitude=lat,
+            longitude=lon,
+            zoom=11,
+            pitch=50,
+            height=700,
+        ),
+        layers=[
+            pdk.Layer(
+            'HexagonLayer',
+            data=chart_data,
+            get_position='[lon, lat]',
+            radius=radius,
+            elevation_scale=4,
+            elevation_range=[0, 1000],
+            pickable=True,
+            extruded=True,
+            ),
+            pdk.Layer(
+                'ScatterplotLayer',
+                data=chart_data,
+                get_position='[lon, lat]',
+                get_color='[200, 30, 0, 160]',
+                get_radius=radius,
+            ),
+        ],
+    ), use_container_width=True)
+
 with st.sidebar.form(key='my_form'):
     st.title("Initialize the map")
 
@@ -58,37 +99,3 @@ with st.sidebar.form(key='download'):
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
-
-chart_data = pd.DataFrame(
-   np.random.randn(1000, 2) / [50, 50] + [48.13, 11.57],
-   columns=['lat', 'lon'])
-
-st.pydeck_chart(pdk.Deck(
-    map_style=None,
-    initial_view_state=pdk.ViewState(
-        latitude=48.13,
-        longitude=11.57,
-        zoom=11,
-        pitch=50,
-        height=700,
-    ),
-    layers=[
-        pdk.Layer(
-           'HexagonLayer',
-           data=chart_data,
-           get_position='[lon, lat]',
-           radius=radius,
-           elevation_scale=4,
-           elevation_range=[0, 1000],
-           pickable=True,
-           extruded=True,
-        ),
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=chart_data,
-            get_position='[lon, lat]',
-            get_color='[200, 30, 0, 160]',
-            get_radius=radius,
-        ),
-    ],
-), use_container_width=True)
