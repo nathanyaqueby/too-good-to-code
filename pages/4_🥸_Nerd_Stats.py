@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import streamlit_extras.mention as mention
+from streamlit_extras.mention import mention
 import pandas as pd
 import numpy as np
 import pydeck as pdk

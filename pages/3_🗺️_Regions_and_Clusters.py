@@ -1,5 +1,5 @@
 import streamlit as st
-import streamlit_extras.mention as mention
+from streamlit_extras.mention import mention
 import leafmap.foliumap as leafmap
 import pandas as pd
 
