@@ -98,9 +98,16 @@ with st.sidebar.form(key='tech_support'):
 # st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
+# set a progress bar
+progress_text = "Loading the map..."
+my_bar = st.progress(0, progress_text)
+
 m = leafmap.Map(center=[40, -100], zoom=4)
 cities = 'https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/world_cities.csv'
 regions = 'https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/world_cities.geojson'
+
+progress_text = "Almost there..."
+my_bar.progress(50, progress_text)
 
 m.add_geojson(regions, layer_name='Munich')
 m.add_points_from_xy(
@@ -113,4 +120,9 @@ m.add_points_from_xy(
     add_legend=True,
 )
 
+my_bar.progress(80, progress_text)
+
 m.to_streamlit(height=700, bidirectional=True)
+
+progress_text = "Finished!"
+my_bar.progress(100, progress_text)
