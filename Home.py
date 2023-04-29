@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+from streamlit_extras.mention import mention
 import pandas as pd
 import numpy as np
 import pydeck as pdk
@@ -62,6 +63,38 @@ with st.sidebar.form(key='my_form'):
     # create a submit button to retrain the model
     loc = st.form_submit_button("Visualize location", type="primary", use_container_width=True)
 
+# tech support section
+with st.sidebar.form(key='tech_support'):
+    st.title("Contact & Tech Support")
+
+    st.markdown("Get help with any technical issue you might be experiencing.")
+
+    mention(
+    label="Website",
+    icon="💻",
+    url="https://www.genistat.ch",
+    write="Website"
+    )
+
+    mention(
+    label="Twitter",
+    icon="twitter",
+    url="https://twitter.com/neuronaiAustria",
+    write="Twitter"
+    )
+
+    mention(
+    label="24/7 Support",
+    icon="☎️",
+    url="https://www.linkedin.com/in/hari-kesavan",
+    write="24/7 Support"
+    )
+
+    # create a submit button
+    if st.form_submit_button("Contact us", type="secondary", use_container_width=True):
+        st.write("Submitted!")
+
+# download section
 with st.sidebar.form(key='download'):
     st.title("Solar Efficiency Report")
 
