@@ -82,7 +82,7 @@ if loc:
     col1, col2, col3 = st.columns(3, gap="medium")
 
     col1.markdown("### Solar Efficiency")
-    col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun. It is a function of the latitude, the longitude, the number of panels and the efficiency of the panels.")
+    col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
     col1.markdown("It is computed as follows:")
     col1.latex(r'''
                 \eta = \frac{E_{panels}}{E_{sun}}
