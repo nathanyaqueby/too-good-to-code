@@ -5,7 +5,7 @@ import numpy as np
 import pydeck as pdk
 
 from streamlit_extras.app_logo import add_logo
-add_logo("img/too good to code.png", layout="centered")
+add_logo("img/too good to code.png")
 
 st.set_page_config(layout="wide",
                         page_title="Solar Efficiency",
