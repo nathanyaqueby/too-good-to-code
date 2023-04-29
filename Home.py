@@ -45,10 +45,10 @@ with st.sidebar.form(key='my_form'):
     # # add radio buttons to show the raster or the vector map
     # map_type = st.radio("Select the map type", ("Raster", "Vector"), horizontal=True)
 
-    street = st.sidebar.text_input("Street", "Altenbergerstrasse 69")
-    city = st.sidebar.text_input("City", "Linz")
-    province = st.sidebar.text_input("Province", "Upper Austria")
-    country = st.sidebar.text_input("Country", "Austria")
+    street = st.text_input("Street", "Altenbergerstrasse 69")
+    city = st.text_input("City", "Linz")
+    province = st.text_input("Province", "Upper Austria")
+    country = st.text_input("Country", "Austria")
 
     geolocator = Nominatim(user_agent="GTA Lookup")
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
@@ -71,11 +71,12 @@ with st.sidebar.form(key='download'):
     if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
         st.write("Downloaded!")
 
-st.sidebar.markdown("---")
+# st.sidebar.markdown("---")
 st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
+st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
-    st.map(map_data) 
+    st.map(map_data, zoom=15, use_container_width=True) 
 else:  
     components.html("""
             <html>
