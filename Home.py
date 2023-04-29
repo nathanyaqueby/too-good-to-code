@@ -67,7 +67,7 @@ with st.sidebar.form(key='my_form'):
 with st.sidebar.form(key='tech_support'):
     st.title("Contact & Tech Support")
 
-    st.markdown("Get help with any technical issue you might be experiencing.")
+    st.markdown("Get help with any technical issue you might experience.")
 
     mention(
     label="Website",
@@ -78,9 +78,9 @@ with st.sidebar.form(key='tech_support'):
 
     mention(
     label="Twitter",
-    icon="twitter",
+    icon="🐤",
     url="https://twitter.com/neuronaiAustria",
-    write="  Twitter"
+    write="Twitter"
     )
 
     mention(
