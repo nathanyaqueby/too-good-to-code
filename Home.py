@@ -84,6 +84,13 @@ with st.sidebar.form(key='tech_support'):
     )
 
     mention(
+    label="GitHub",
+    icon="⚙️",
+    url="https://www.github.com/nathanyaqueby/too-good-to-code",
+    write="GitHub"
+    )
+
+    mention(
     label="24/7 Support",
     icon="☎️",
     url="https://www.linkedin.com/in/hari-kesavan",
@@ -105,7 +112,7 @@ with st.sidebar.form(key='tech_support'):
 #         st.write("Downloaded!")
 
 # st.sidebar.markdown("---")
-st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
+# st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
