@@ -12,6 +12,13 @@ import geopy
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
+st.markdown("""
+    <style>
+    .css-8hkptd {
+            margin-right: 10px;
+        }
+    </style>""", unsafe_allow_html=True)
+
 st.set_page_config(layout="wide",
                     page_title="Too Good To Code",
                     page_icon="😎",
