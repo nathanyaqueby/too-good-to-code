@@ -21,11 +21,18 @@ with st.sidebar.form(key='my_form'):
                 we have to find out how many solar panels can we fit and 
                 how much energy can they produce.
             """, icon="🗒️")
+    
+    data = pd.read_csv("data/simplemaps_worldcities_basicv1.76/worldcities.csv")
 
-    country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
+    # get the unique country names
+    country_names = data["country"].unique().tolist()
 
     # set up a dropdown menu to select the country of interest
     country = st.selectbox("Select a country", country_names, index=country_names.index('Germany'))
+
+    # set a dropdown menu with cities according to the country selected
+    city_names = data["city"].loc[data["country"] == country].unique().tolist()
+    city = st.selectbox("Select a city", city_names, index=city_names.index('Munich'))
 
     # set up a slider to select the number of panels
     radius = st.slider("Select the radius", 0, 500, 200)
