@@ -20,8 +20,6 @@ def create_map(radius, city):
     lat = data["lat"].loc[data["city"] == city].values[0]
     lon = data["lng"].loc[data["city"] == city].values[0]
 
-    st.write(f"Latitude: {lat}, Longitude: {lon}")
-
     chart_data = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [lat, lon],
     columns=['lat', 'lon'])
