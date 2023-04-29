@@ -106,7 +106,7 @@ with st.sidebar.form(key='my_form'):
 
 # tech support section
 with st.sidebar.form(key='tech_support'):
-    st.title("Contact & Tech Support")
+    st.title("Contact")
 
     st.markdown("Get help with any technical issue you might experience.")
 
