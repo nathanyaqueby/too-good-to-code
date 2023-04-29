@@ -4,9 +4,6 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 
-from streamlit_extras.app_logo import add_logo
-add_logo("img/too good to code.png", height=60)
-
 st.set_page_config(layout="wide",
                         page_title="Solar Efficiency",
                         page_icon="☀️",
@@ -22,6 +19,8 @@ def create_map(radius, city):
     # get the latitude and longitude of the city
     lat = data["lat"].loc[data["city"] == city].values[0]
     lon = data["lng"].loc[data["city"] == city].values[0]
+
+    st.write(f"Latitude: {lat}, Longitude: {lon}")
 
     chart_data = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [lat, lon],
