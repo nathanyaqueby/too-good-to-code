@@ -76,7 +76,33 @@ st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nath
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
-    st.map(map_data, zoom=15, use_container_width=True) 
+    st.map(map_data, zoom=19, use_container_width=True) 
+
+    # add three columns to the main page with explanations on the solar efficiency
+    col1, col2, col3 = st.columns(3)
+
+    col1.markdown("### Solar Efficiency")
+    col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun. It is a function of the latitude, the longitude, the number of panels and the efficiency of the panels.")
+    col1.markdown("It is computed as follows:")
+    col1.latex(r'''
+                \eta = \frac{E_{panels}}{E_{sun}}
+                ''')
+    
+    col2.markdown("### Amount of Energy Produced")
+    col2.markdown("A function of the solar efficiency and the energy received by the sun.")
+    col2.markdown("It is computed as follows:")
+    col2.latex(r'''
+                E_{panels} = \eta \times E_{sun}
+                ''')
+    
+    col3.markdown("### Details")
+    # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
+    col3.markdown("📍 Location: "+str(location.address))
+    col3.markdown("📐 Area: 38 m^2")
+    col3.markdown("☀️ Sun radiation: 1211 kwh/m^2")
+    col3.markdown("🌱 Solar efficiency: 4.2/10")
+    col3.markdown("⚡ Electric potential: 118 kwh")
+
 else:  
     components.html("""
             <html>
