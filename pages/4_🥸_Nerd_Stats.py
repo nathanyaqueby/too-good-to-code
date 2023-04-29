@@ -56,7 +56,7 @@ st.sidebar.image("img/too good to code.png", use_column_width=True)
 st.title("Genistat's Solar Challenge")
 
 # create 3x3 grid layout
-col1, col2, col3 = st.beta_columns(3, gap="medium")
+col1, col2, col3 = st.beta_columns(3, gap="large")
 
 with col1:
     st.image("img/solar/1.png", use_column_width=True)
