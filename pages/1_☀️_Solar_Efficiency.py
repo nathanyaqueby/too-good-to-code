@@ -11,6 +11,13 @@ st.set_page_config(layout="wide",
                         initial_sidebar_state="expanded"
                         )
 
+st.markdown("""
+    <style>
+    .css-8hkptd {
+            margin-right: 15px;
+        }
+    </style>""", unsafe_allow_html=True)
+
 st.title("Genistat's Solar Challenge")
 # st.markdown("## Welcome to Too Good To Code!")
 
@@ -62,7 +69,7 @@ with st.sidebar.form(key='my_form'):
                 For the given location, 
                 we will calculate how many solar panels are needed and 
                 how much energy they can produce.
-            """, icon="🗒️")
+            """)
     
     data = pd.read_csv("data/simplemaps_worldcities_basicv1.76/worldcities.csv")
 

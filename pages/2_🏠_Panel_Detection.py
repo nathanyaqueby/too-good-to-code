@@ -14,6 +14,13 @@ st.set_page_config(layout="wide",
                         initial_sidebar_state="expanded"
                         )
 
+st.markdown("""
+    <style>
+    .css-8hkptd {
+            margin-right: 15px;
+        }
+    </style>""", unsafe_allow_html=True)
+
 st.title("Genistat's Solar Challenge")
 # st.markdown("## Welcome to Too Good To Code!")
 
@@ -50,7 +57,7 @@ with st.sidebar.form(key='my_form'):
 
     st.info("""
             Visualize the rooftops on the selected location.
-            """, icon="🗒️")
+            """)
 
     basemap = st.selectbox("Select a basemap", basemaps,
                            index=basemaps.index('HYBRID'))

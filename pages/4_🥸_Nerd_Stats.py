@@ -11,6 +11,13 @@ st.set_page_config(layout="wide",
                         initial_sidebar_state="expanded"
                         )
 
+st.markdown("""
+    <style>
+    .css-8hkptd {
+            margin-right: 15px;
+        }
+    </style>""", unsafe_allow_html=True)
+
 # tech support section
 with st.sidebar.form(key='tech_support'):
     st.title("Contact")
