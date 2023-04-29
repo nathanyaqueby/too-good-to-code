@@ -20,7 +20,7 @@ col1, col2, col3 = st.beta_columns(3)
 with col1:
     st.image("img/solar/1.png", use_column_width=True)
 
-    st.subheader("How many German roofs must be equipped with solar panels to substitute all of Germany's fossil energy sources?")
+    st.markdown("## How many German roofs must be equipped with solar panels to substitute all of Germany's fossil energy sources?")
 
     st.markdown("""
     Add some text here
