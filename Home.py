@@ -183,13 +183,13 @@ components.html("""
         <head>
         </head>
 
-        <iframe height="700" style="width: 100%;" scrolling="no" title="OSM Buildings" src="https://codepen.io/osmbuildings/embed/oVVXEm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/osmbuildings/pen/oVVXEm">
-            OSM Buildings</a> by OSM Buildings (<a href="https://codepen.io/osmbuildings">@osmbuildings</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-            </iframe>
+        <iframe height="700" style="width: 100%;" scrolling="no" title="OSM Buildings" src="https://codepen.io/nqueby/embed/vYVJJGz?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/nqueby/pen/vYVJJGz">
+        OSM Buildings</a> by Nathanya Queby Satriani (<a href="https://codepen.io/nqueby">@nqueby</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+
         </html>
         """,
-        height=1200,
         scrolling=True
         )
