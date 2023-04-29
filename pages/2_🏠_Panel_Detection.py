@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import streamlit_extras.mention as mention
 import pandas as pd
 import numpy as np
 import pydeck as pdk
@@ -103,16 +104,49 @@ with st.sidebar.form(key='my_form'):
     if st.form_submit_button("Initialize", type="primary", use_container_width=True):
         st.write("Initialized!")
 
-with st.sidebar.form(key='download'):
-    st.title("Solar Efficiency Report")
+# tech support section
+with st.sidebar.form(key='tech_support'):
+    st.title("Contact & Tech Support")
 
-    st.markdown("Save all the results of the solar efficiency analysis and the visualizations in a PDF file.")
+    st.markdown("Get help with any technical issue you might experience.")
 
-    # create a submit button to download the retrained model
-    if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
-        st.write("Downloaded!")
+    mention(
+    label="Website",
+    icon="💻",
+    url="https://www.genistat.ch",
+    write="Website"
+    )
 
-st.sidebar.markdown("---")
+    mention(
+    label="Twitter",
+    icon="🐤",
+    url="https://twitter.com/neuronaiAustria",
+    write="Twitter"
+    )
+
+    mention(
+    label="24/7 Support",
+    icon="☎️",
+    url="https://www.linkedin.com/in/hari-kesavan",
+    write="24/7 Support"
+    )
+
+    # create a submit button
+    if st.form_submit_button("Contact us", type="secondary", use_container_width=True):
+        st.write("Submitted!")
+
+# download section
+# with st.sidebar.form(key='download'):
+#     st.title("Solar Efficiency Report")
+
+#     st.markdown("Save all the results of the solar efficiency analysis and the visualizations in a PDF file.")
+
+#     # create a submit button to download the retrained model
+#     if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
+#         st.write("Downloaded!")
+
+# st.sidebar.markdown("---")
 st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
+st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 Map.to_streamlit(height=700)
