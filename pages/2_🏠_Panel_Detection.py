@@ -48,10 +48,8 @@ with st.sidebar.form(key='my_form'):
     st.title("Initialize the map")
 
     st.info("""
-                    For the given location, 
-                    we have to find out how many solar panels can we fit and 
-                    how much energy can they produce.
-                """, icon="🗒️")
+            Visualize the rooftops on the selected location.
+            """, icon="🗒️")
 
     basemap = st.selectbox("Select a basemap", basemaps,
                            index=basemaps.index('HYBRID'))
@@ -61,7 +59,7 @@ with st.sidebar.form(key='my_form'):
                            index=country_names.index('Germany'))
 
     if country == 'USA':
-        state = st.selectbox('Select a state', state_names,
+        state = st.selectbox('Select a city', state_names,
                              index=state_names.index('Munich'))
         layer_name = state
 

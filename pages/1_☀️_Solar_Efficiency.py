@@ -59,8 +59,8 @@ with st.sidebar.form(key='my_form'):
 
     st.info("""
                 For the given location, 
-                we have to find out how many solar panels can we fit and 
-                how much energy can they produce.
+                we will calculate how many solar panels are needed and 
+                how much energy they can produce.
             """, icon="🗒️")
     
     data = pd.read_csv("data/simplemaps_worldcities_basicv1.76/worldcities.csv")

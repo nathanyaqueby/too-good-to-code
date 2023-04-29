@@ -15,10 +15,10 @@ with st.sidebar.form(key='my_form'):
     st.title("Initialize the map")
 
     st.info("""
-                    For the given location, 
-                    we have to find out how many solar panels can we fit and 
-                    how much energy can they produce.
-                """, icon="🗒️")
+            For the given location, 
+            we have to find out how many solar panels can we fit and 
+            how much energy can they produce.
+            """, icon="🗒️")
 
     country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
 
