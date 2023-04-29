@@ -17,10 +17,10 @@ with st.sidebar.form(key='my_form'):
     st.title("Initialize the map")
 
     st.info("""
-                    For the given location, 
-                    we have to find out how many solar panels can we fit and 
-                    how much energy can they produce.
-                """, icon="🗒️")
+                For the given location, 
+                we have to find out how many solar panels can we fit and 
+                how much energy can they produce.
+            """, icon="🗒️")
 
     country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
 
@@ -28,7 +28,7 @@ with st.sidebar.form(key='my_form'):
     country = st.selectbox("Select a country", country_names, index=country_names.index('Germany'))
 
     # set up a slider to select the number of panels
-    num_panels = st.slider("Select the number of panels", 0, 100, 50)
+    radius = st.slider("Select the radius", 0, 500, 200)
 
     # set up a slider to filter the efficiency
     efficiency = st.slider("Select the efficiency", 0.0, 1.0, 0.5, 0.01)
@@ -70,7 +70,7 @@ st.pydeck_chart(pdk.Deck(
            'HexagonLayer',
            data=chart_data,
            get_position='[lon, lat]',
-           radius=200,
+           radius=radius,
            elevation_scale=4,
            elevation_range=[0, 1000],
            pickable=True,
@@ -81,7 +81,7 @@ st.pydeck_chart(pdk.Deck(
             data=chart_data,
             get_position='[lon, lat]',
             get_color='[200, 30, 0, 160]',
-            get_radius=200,
+            get_radius=radius,
         ),
     ],
 ), use_container_width=True)
