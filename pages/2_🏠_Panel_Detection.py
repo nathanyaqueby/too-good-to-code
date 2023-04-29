@@ -32,6 +32,7 @@ countries_gdf = read_data(countries)
 states_gdf = read_data(states)
 
 country_names = countries_gdf['NAME'].values.tolist()
+st.write(country_names)
 country_names.remove('United States of America')
 country_names.append('USA')
 country_names.sort()
@@ -58,11 +59,11 @@ with st.sidebar.form(key='my_form'):
     Map.add_basemap(basemap)
 
     country = st.selectbox('Select a country', country_names,
-                           index=country_names.index('USA'))
+                           index=country_names.index('Germany'))
 
     if country == 'USA':
         state = st.selectbox('Select a state', state_names,
-                             index=state_names.index('Florida'))
+                             index=state_names.index('Munich'))
         layer_name = state
 
         try:
@@ -95,12 +96,15 @@ with st.sidebar.form(key='my_form'):
 
     Map.centerObject(fc.first(), zoom=16)
 
-    with st.expander("Data Sources"):
-        st.info(
-            """
-            [Microsoft Building Footprints](https://gee-community-catalog.org/projects/msbuildings/)
-            """
-        )
+    # with st.expander("Data Sources"):
+    #     st.info(
+    #         """
+    #         [Microsoft Building Footprints](https://gee-community-catalog.org/projects/msbuildings/)
+    #         """
+    #     )
+    
+    if st.form_submit_button("Initialize", type="primary", use_container_width=True):
+        st.write("Initialized!")
 
 with st.sidebar.form(key='download'):
     st.title("Solar Efficiency Report")
