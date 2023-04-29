@@ -32,7 +32,6 @@ countries_gdf = read_data(countries)
 states_gdf = read_data(states)
 
 country_names = countries_gdf['NAME'].values.tolist()
-st.write(country_names)
 country_names.remove('United States of America')
 country_names.append('USA')
 country_names.sort()
