@@ -60,7 +60,7 @@ m.add_points_from_xy(
     x="longitude",
     y="latitude",
     # color_column='region',
-    icon_names=['gear', 'map', 'leaf', 'globe'],
+    # icon_names=['gear', 'map', 'leaf', 'globe'],
     spin=True,
     add_legend=True,
 )
