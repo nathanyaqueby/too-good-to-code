@@ -191,5 +191,6 @@ components.html("""
 
         </html>
         """,
+        height=700,
         scrolling=True
         )
