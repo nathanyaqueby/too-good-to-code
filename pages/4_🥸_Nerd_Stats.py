@@ -68,7 +68,7 @@ with col1:
 
     st.markdown("""
     According to [sources](https://www.destatis.de/EN/Themes/Economic-Sectors-Enterprises/Energy/Production/_node.html), among the 571.3 billion kWh produced, 44% are renewables while 56% are conventional.
-     This means that we have 319.928 billion kWh to substitute for.
+     This means that we have 319.928 billion kWh to substitute for, spread across 22.562.032 average houses in Germany.
     """)
 
     # st.info("""
