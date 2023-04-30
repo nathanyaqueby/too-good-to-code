@@ -1,5 +1,7 @@
-# 😎☀️ Project name here 
+# 😎☀️ SmartQ
 Developed during the TUM.ai Makeathon 2023 for the Genistat challenge by team Too Good To Code.
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://too-good-to-code.streamlit.app)
 
 The future of energy is green! To accelerate the clean energy revolution, we must use the resources we have in the most effective manner. Last year, 50% more solar panels were installed on German roofs than the year before. While this is great news, it does not paint the full picture. Due to supply chain limitations and skill shortage, most home owners in Germany have to wait up to 1 year for a consultation appointment with solar roof experts. For an installation, the waiting periods are even crazier: Waiting times of 2-3 years before a solar roof can be installed have become the new normal. The current solar market does not scale with the demand!
 
