@@ -198,7 +198,21 @@ with col2:
 
     # display the last clicked location from the st_data dict
     st.markdown("---")
-    st.markdown("### Last Clicked Location")
-    st.markdown("Select the precise point on the map and you should see the latitude and longitude below.")
-    st.write("Latitude: ", st_data["last_clicked"]["lat"])
-    st.write("Longitude: ", st_data["last_clicked"]["lng"])
+
+    # create two subcolumns
+    col21, col22 = st.columns(2)
+
+    with col21:	
+        st.markdown("### Last Clicked Location")
+        try:
+            st.write("Latitude: ", st_data["last_clicked"]["lat"])
+            st.write("Longitude: ", st_data["last_clicked"]["lng"])
+        except TypeError:
+            st.markdown("Select the precise point on the map and you should see the latitude and longitude here.")
+    
+    with col22:
+        # add metric
+        st.markdown("### Predicted Solar Potential")
+        # add suggested solar panel amount and energy produced
+        st.markdown("The suggested solar panel amount is 2.")
+        
