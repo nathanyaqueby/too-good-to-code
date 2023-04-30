@@ -179,7 +179,7 @@ with col2:
 
     # add a button to display the top 100 buildings
     if st.button("Display top 100 buildings", type="secondary", use_container_width=True):
-        st.dataframe(top_100, use_container_width=True)
+        st.dataframe(top_100, use_container_width=True, height=120)
 
     # add the top buildings from top_100 to the map
     for i in range(len(top_100)):
