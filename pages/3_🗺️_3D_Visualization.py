@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit.components.v1 import components
+import streamlit.components.v1 as components
 from streamlit_extras.mention import mention
 import leafmap.foliumap as leafmap
 import pandas as pd
