@@ -65,7 +65,7 @@ with st.sidebar.form(key='my_form'):
 
     street = st.text_input("Street", "Rathausmarkt 1")
     city = st.text_input("City", "Hamburg")
-    province = st.text_input("Province", "Hamburg")
+    province = st.text_input("Province/State", "Hamburg")
     country = st.text_input("Country", "Germany")
 
     geolocator = Nominatim(user_agent="GTA Lookup")
@@ -75,8 +75,8 @@ with st.sidebar.form(key='my_form'):
     lat = location.latitude
     lon = location.longitude
 
-    st.write("Latitude: ", lat)
-    st.write("Longitude: ", lon)
+    # st.write("Latitude: ", lat)
+    # st.write("Longitude: ", lon)
 
     # map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
 
