@@ -148,17 +148,18 @@ if loc:
     # add three columns to the main page with explanations on the solar efficiency
     col1, col2, col3 = st.columns(3, gap="medium")
 
-    col1.markdown("### Satellite Image")
-    # col1.image(sat_img, use_column_width=True)
-    # col1.map(map_data, zoom=16, use_container_width=True) 
-    
-    st_data = st_folium(m, zoom=16, width=640, height=640)
+    with col1:
+        st.markdown("### Satellite Image")
+        # col1.image(sat_img, use_column_width=True)
+        # col1.map(map_data, zoom=16, use_container_width=True) 
+        
+        st_data = st_folium(m, zoom=16, width=640, height=640)
 
-    # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
-    # col1.markdown("It is computed as follows:")
-    # col1.latex(r'''
-    #             \eta = \frac{E_{panels}}{E_{sun}}
-    #             ''')
+        # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
+        # col1.markdown("It is computed as follows:")
+        # col1.latex(r'''
+        #             \eta = \frac{E_{panels}}{E_{sun}}
+        #             ''')
     
     # col2.markdown("### Amount of Energy Produced")
     # col2.markdown("A function of the solar efficiency and the energy received by the sun.")
@@ -167,39 +168,41 @@ if loc:
     #             E_{panels} = \eta \times E_{sun}
     #             ''')
     
-    col2.markdown("### Details")
-    round_num = 2
-    center_lat = round(df["center_lat"], round_num)
-    center_long = round(df["center_long"], round_num)
-    round_lat = round(lat, round_num)
-    round_lon = round(lon, round_num)
-    # get the solar_area, energy_produced, and radiance based on the closest latitude and longitude
-    try:
-        solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
-        energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
-        radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
-    except IndexError:
-        round_num -= 1
+    with col2:
+        st.markdown("### Details")
+        round_num = 2
         center_lat = round(df["center_lat"], round_num)
         center_long = round(df["center_long"], round_num)
         round_lat = round(lat, round_num)
         round_lon = round(lon, round_num)
-        solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
-        energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
-        radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
+        # get the solar_area, energy_produced, and radiance based on the closest latitude and longitude
+        try:
+            solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
+            energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
+            radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
+        except IndexError:
+            round_num -= 1
+            center_lat = round(df["center_lat"], round_num)
+            center_long = round(df["center_long"], round_num)
+            round_lat = round(lat, round_num)
+            round_lon = round(lon, round_num)
+            solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
+            energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
+            radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
 
-    # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
-    col2.markdown("📍 Location: "+str(location.address))
-    col2.markdown(f"📐 Solar area: {solar_area} m^2")
-    col2.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
-    col2.markdown(f"🌱 Solar efficiency: 4.2/10")
-    col2.markdown(f"⚡ Electric potential: {energy_produced} kwh")
+        # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
+        col2.markdown("📍 Location: "+str(location.address))
+        col2.markdown(f"📐 Solar area: {solar_area} m^2")
+        col2.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
+        col2.markdown(f"🌱 Solar efficiency: 4.2/10")
+        col2.markdown(f"⚡ Electric potential: {energy_produced} kwh")
 
-    col3.markdown("### Heatmap")
-    # plot the radiance heatmap for the city of Hamburg based on the dataframe
-    fig = px.density_mapbox(df, lat="center_lat", lon="center_long", z="radiance", radius=10, zoom=10, mapbox_style="stamen-terrain")
-    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    col3.plotly_chart(fig, use_container_width=True)
+    with col3:
+        st.markdown("### Heatmap")
+        # plot the radiance heatmap for the city of Hamburg based on the dataframe
+        fig = px.density_mapbox(df, lat="center_lat", lon="center_long", z="radiance", radius=10, zoom=10, mapbox_style="stamen-terrain")
+        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        st.plotly_chart(fig, use_container_width=True)
 
 
 else:  
