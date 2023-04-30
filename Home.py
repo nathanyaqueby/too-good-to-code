@@ -76,7 +76,7 @@ with st.sidebar.form(key='my_form'):
     st.write("Latitude: ", lat)
     st.write("Longitude: ", lon)
 
-    # map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
+    map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
 
     sat_img = save_satellite_image(lat, lon)
 
@@ -136,13 +136,13 @@ with st.sidebar.form(key='tech_support'):
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
-    # st.map(map_data, zoom=16, use_container_width=True) 
 
     # add three columns to the main page with explanations on the solar efficiency
     col1, col2, col3 = st.columns(3, gap="medium")
 
     col1.markdown("### Satellite Image")
-    col1.image(sat_img, use_column_width=True)
+    # col1.image(sat_img, use_column_width=True)
+    st.map(map_data, zoom=20, use_container_width=True) 
     # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
     # col1.markdown("It is computed as follows:")
     # col1.latex(r'''
