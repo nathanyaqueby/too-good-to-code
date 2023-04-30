@@ -157,10 +157,25 @@ if loc:
     #             ''')
     
     col2.markdown("### Details")
+    round_num = 2
+    center_lat = round(df["center_lat"], round_num)
+    center_long = round(df["center_long"], round_num)
+    round_lat = round(lat, round_num)
+    round_lon = round(lon, round_num)
     # get the solar_area, energy_produced, and radiance based on the closest latitude and longitude
-    solar_area = df.loc[(round(df["center_lat"], 2) == round(lat, 2)) & (round(df["center_long"], 2) == round(lon, 2)), "solar_area"].values[0]
-    energy_produced = df.loc[(round(df["center_lat"], 2) == round(lat, 2)) & (round(df["center_long"], 2) == round(lon, 2)), "energy_produced"].values[0]
-    radiance = df.loc[(round(df["center_lat"], 2) == round(lat, 2)) & (round(df["center_long"], 2) == round(lon, 2)), "radiance"].values[0]
+    try:
+        solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
+        energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
+        radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
+    except IndexError:
+        round_num -= 1
+        center_lat = round(df["center_lat"], round_num)
+        center_long = round(df["center_long"], round_num)
+        round_lat = round(lat, round_num)
+        round_lon = round(lon, round_num)
+        solar_area = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["solar_area"].values[0]
+        energy_produced = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["energy_produced"].values[0]
+        radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
 
     # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
     col2.markdown("📍 Location: "+str(location.address))
