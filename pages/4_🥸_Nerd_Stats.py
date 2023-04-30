@@ -81,7 +81,7 @@ with col2:
     st.subheader("In which German regions should solar be subsidized the most?")
 
     st.markdown("""
-    After calculating the region with the most amount of sun radiation and the most amount of roofs, we conclude that the region of Berlin should be subsidized the most.
+    After calculating the region with the most amount of sun radiation and the most amount of roofs, we conclude that the region of Berlin has the most radiation should be subsidized the most.
     """)
 
     # st.info("""
