@@ -70,7 +70,7 @@ with st.sidebar.form(key='my_form'):
     province = st.selectbox("Select a state", ["Hamburg", "Berlin", "Bremen"], index=0)
     country = st.text_input("Country", "Germany")
 
-    city = "Hamburg" if province == "Hamburg" else "Berlin" if province == "Berlin" else "Bremen
+    city = "Hamburg" if province == "Hamburg" else "Berlin" if province == "Berlin" else "Bremen"
 
     geolocator = Nominatim(user_agent="GTA Lookup")
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
