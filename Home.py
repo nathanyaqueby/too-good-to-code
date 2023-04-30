@@ -154,6 +154,11 @@ with col1:
     st.markdown("### Satellite Image")
     # col1.image(sat_img, use_column_width=True)
     # col1.map(map_data, zoom=16, use_container_width=True) 
+
+    # get the sum of the radiance from each dataframe and print the result
+    st.write("Total radiance: ", round(df["radiance"].sum(), 2))
+    st.write("Total radiance: ", round(df_berlin["radiance"].sum(), 2))
+    st.write("Total radiance: ", round(df_bremen["radiance"].sum(), 2))
     
     st_data = st_folium(m, width=640, height=640)
     
