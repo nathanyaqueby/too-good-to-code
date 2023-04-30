@@ -173,17 +173,19 @@ with col2:
     # display the top 100 buildings with the largest roofs and best efficiency per square meter from df
     st.markdown("---")
     st.markdown("### Top 100 Buildings")
-    st.markdown(f"The top 100 buildings with the largest roofs and best efficiency per square meter in {province} are displayed below.")
-    top_100 = st.dataframe(df[["solar_area", "energy_produced", "radiance"]].head(100), use_container_width=True, height=120)
+    st.markdown(f"Buildings with the largest roofs and best efficiency per square meter in {province}.")
+    # get the top 100 buildings from df and display them in a table
+    top_100 = df.sort_values(by=["solar_area", "radiance"], ascending=False).head(100)
 
-    # add top buildings to the map
-    show_top = st.checkbox("Show top 100 buildings on map")
-    if show_top:
-        for i in range(100):
-            folium.Marker(
-                [df["center_lat"][i], df["center_long"][i]], popup=f"Building {i}", tooltip=f"Building {i}"
-            ).add_to(m)
-        st_data = st_folium(m, width=640, height=640)
+    # add a button to display the top 100 buildings
+    if st.button("Display top 100 buildings", type="secondary", use_container_width=True):
+        st.dataframe(top_100, use_container_width=True)
+
+    # add the top buildings from top_100 to the map
+    for i in range(len(top_100)):
+        folium.Marker(
+            [top_100.iloc[i]["center_lat"], top_100.iloc[i]["center_long"]], popup="Top 100", tooltip="Top 100"
+        ).add_to(m)
 
     # display the last clicked location from the st_data dict
     st.markdown("---")
