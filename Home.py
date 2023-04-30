@@ -146,7 +146,7 @@ st.sidebar.image("img/too good to code.png", use_column_width=True)
 if loc:
 
     # add three columns to the main page with explanations on the solar efficiency
-    col1, col2 = st.columns(3, gap="medium")
+    col1, col2 = st.columns(2, gap="medium")
 
     with col1:
         st.markdown("### Satellite Image")
