@@ -190,8 +190,15 @@ with col2:
         radiance = df.loc[(center_lat == round_lat) & (center_long == round_lon)]["radiance"].values[0]
 
     # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
-    col2.markdown("📍 Location: "+str(location.address))
-    col2.markdown(f"📐 Solar area: {solar_area} m^2")
-    col2.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
-    col2.markdown(f"🌱 Solar efficiency: 4.2/10")
-    col2.markdown(f"⚡ Electric potential: {energy_produced} kwh")
+    st.markdown("📍 Location: "+str(location.address))
+    st.markdown(f"📐 Solar area: {solar_area} m^2")
+    st.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
+    st.markdown(f"🌱 Solar efficiency: 4.2/10")
+    st.markdown(f"⚡ Electric potential: {energy_produced} kwh")
+
+    # display the last clicked location from the st_data dict
+    st.markdown("---")
+    st.markdown("### Last Clicked Location")
+    st.markdown("Select the precise point on the map and you should see the latitude and longitude below.")
+    st.write("Latitude: ", st_data.json_data["last_clicked"]["lat"])
+    st.write("Longitude: ", st_data.json_data["last_clicked"]["lng"])
