@@ -17,6 +17,8 @@ That's why we must ensure that the limited solar panel resources we have are use
 - Our model will predict the needed amount of solar panels for the residence
 - Play around with our visualizations and see how we predicted the roof type, sun radiation, etc.
 
+The AI model and calculations can be found in the `roof_classification.zip` file.
+
 ## Team
 - Alexander Deutschbauer
 - Hari Kesavan
