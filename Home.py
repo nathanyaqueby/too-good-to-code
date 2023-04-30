@@ -187,7 +187,7 @@ with col2:
     # get the top 100 buildings from df and display them in a table
 
     # add a button to display the top 100 buildings
-    if st.checkbox("Display top 100 buildings"):
+    if st.checkbox("Display dataframe"):
         st.dataframe(top_100, use_container_width=True, height=120)
 
     # add the top buildings from top_100 to the map
