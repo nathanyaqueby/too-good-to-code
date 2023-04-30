@@ -200,5 +200,5 @@ with col2:
     st.markdown("---")
     st.markdown("### Last Clicked Location")
     st.markdown("Select the precise point on the map and you should see the latitude and longitude below.")
-    st.write("Latitude: ", st_data.json_data["last_clicked"]["lat"])
-    st.write("Longitude: ", st_data.json_data["last_clicked"]["lng"])
+    st.write("Latitude: ", st_data["last_clicked"]["lat"])
+    st.write("Longitude: ", st_data["last_clicked"]["lng"])
