@@ -155,9 +155,9 @@ if loc:
     
     col2.markdown("### Details")
     # get the solar_area, energy_produced, and radiance based on the closest latitude and longitude
-    solar_area = df.loc[(df["center_lat"].round(3) == lat.round(3)) & (df["center_long"].round(3) == lon.round(3)), "solar_area"].values[0]
-    energy_produced = df.loc[(df["center_lat"].round(3) == lat.round(3)) & (df["center_long"].round(3) == lon.round(3)), "energy_produced"].values[0]
-    radiance = df.loc[(df["center_lat"].round(3) == lat.round(3)) & (df["center_long"].round(3) == lon.round(3)), "radiance"].values[0]
+    solar_area = df.loc[(round(df["center_lat"], 3) == round(lat, 3)) & (round(df["center_long"], 3) == round(lon, 3)), "solar_area"].values[0]
+    energy_produced = df.loc[(round(df["center_lat"], 3) == round(lat, 3)) & (round(df["center_long"], 3) == round(lon, 3)), "energy_produced"].values[0]
+    radiance = df.loc[(round(df["center_lat"], 3) == round(lat, 3)) & (round(df["center_long"], 3) == round(lon, 3)), "radiance"].values[0]
 
     # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
     col2.markdown("📍 Location: "+str(location.address))
