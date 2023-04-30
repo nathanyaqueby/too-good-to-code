@@ -176,6 +176,14 @@ with col2:
     st.markdown(f"The top 100 buildings with the largest roofs and best efficiency per square meter in {province} are displayed below.")
     st.dataframe(df[["solar_area", "energy_produced", "radiance"]].head(100), use_container_width=True, height=120)
 
+    # add top buildings to the map
+    show_top = st.checkbox("Show top 100 buildings on map")
+    if show_top:
+        for i in range(100):
+            folium.Marker(
+                [df["center_lat"].values[i], df["center_long"].values[i]], popup=f"#{i} building with largest roof & efficiency", tooltip=f"#{i} building with largest roof & efficiency"
+            ).add_to(m)
+
     # display the last clicked location from the st_data dict
     st.markdown("---")
 
