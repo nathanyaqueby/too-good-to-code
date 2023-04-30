@@ -11,6 +11,8 @@ import geopy
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 import plotly.express as px
+from streamlit_folium import st_folium
+import folium
 
 from preprocessing import save_satellite_image
 
@@ -76,9 +78,15 @@ with st.sidebar.form(key='my_form'):
     st.write("Latitude: ", lat)
     st.write("Longitude: ", lon)
 
-    map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
+    # map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
 
-    sat_img = save_satellite_image(lat, lon)
+    # sat_img = save_satellite_image(lat, lon)
+
+    # center on Liberty Bell, add marker
+    m = folium.Map(location=[lat, lon], zoom_start=16)
+    folium.Marker(
+        [lat, lon], popup="Selected location", tooltip="Selected location"
+    ).add_to(m)
 
     # create a submit button to retrain the model
     loc = st.form_submit_button("Visualize location", type="primary", use_container_width=True)
@@ -142,7 +150,10 @@ if loc:
 
     col1.markdown("### Satellite Image")
     # col1.image(sat_img, use_column_width=True)
-    col1.map(map_data, zoom=16, use_container_width=True) 
+    # col1.map(map_data, zoom=16, use_container_width=True) 
+    
+    st_data = st_folium(m, zoom=16, width=640, height=640)
+
     # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
     # col1.markdown("It is computed as follows:")
     # col1.latex(r'''
