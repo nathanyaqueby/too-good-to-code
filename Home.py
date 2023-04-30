@@ -142,7 +142,7 @@ if loc:
 
     col1.markdown("### Satellite Image")
     # col1.image(sat_img, use_column_width=True)
-    st.map(map_data, zoom=20, use_container_width=True) 
+    col1.map(map_data, zoom=16, use_container_width=True) 
     # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
     # col1.markdown("It is computed as follows:")
     # col1.latex(r'''
