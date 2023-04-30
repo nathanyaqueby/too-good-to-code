@@ -68,7 +68,7 @@ with st.sidebar.form(key='my_form'):
     street = st.text_input("Street", "Rathausmarkt 1")
     # set up a dropdown menu to select the state between Hamburg, Berlin and Bremen
     province = st.selectbox("Select a state", ["Hamburg", "Berlin", "Bremen"], index=0)
-    country = st.text_input("Country", "Germany")
+    country = "Germany"
 
     city = "Hamburg" if province == "Hamburg" else "Berlin" if province == "Berlin" else "Bremen"
 
@@ -78,6 +78,9 @@ with st.sidebar.form(key='my_form'):
 
     lat = location.latitude
     lon = location.longitude
+
+    # add a slider to select the budget in euros
+    budget = st.slider("Select the budget in euros (€)", 0, 100000, 50000)
 
     # st.write("Latitude: ", lat)
     # st.write("Longitude: ", lon)
