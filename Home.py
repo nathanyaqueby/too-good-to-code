@@ -44,7 +44,7 @@ with st.sidebar.form(key='my_form'):
             # , icon="🗒️"
             )
 
-    # country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
+    country_names = pd.read_csv("data/average-latitude-longitude-countries.csv")["Country"].values.tolist()
 
     # # set up a dropdown menu to select the country of interest
     # country = st.selectbox("Select a country", country_names, index=country_names.index('Germany'))
@@ -61,10 +61,10 @@ with st.sidebar.form(key='my_form'):
     # load data
     df = pd.read_csv("data/final/solar_hamburg_short.csv")
 
-    street = st.text_input("Street", "Altenbergerstrasse 69")
-    city = st.text_input("City", "Linz")
-    province = st.text_input("Province", "Upper Austria")
-    country = st.text_input("Country", "Austria")
+    street = st.text_input("Street", "Rathausmarkt 1")
+    city = st.text_input("City", "Hamburg")
+    province = st.text_input("Province", "Hamburg")
+    country = st.selectbox("Country", country_names, index=country_names.index('Germany'))
 
     geolocator = Nominatim(user_agent="GTA Lookup")
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
