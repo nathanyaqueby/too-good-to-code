@@ -13,6 +13,8 @@ def save_satellite_image(lat, long, file='pic.jpg', zoom=20):
     r = requests.get(url + "center=" + center + "&zoom=" +
                    str(zoom) + "&maptype=satellite" + "&size=640x640&key=" +
                              api_key )
+    
+    st.write(r)
 
     # wb mode is stand for write binary mode
     f = open(file, 'wb')
