@@ -134,13 +134,6 @@ st.sidebar.image("img/too good to code.png", use_column_width=True)
 # add three columns to the main page with explanations on the solar efficiency
 col1, col2 = st.columns(2, gap="medium")
 
-with col1:
-    st.markdown("### Satellite Image")
-    # col1.image(sat_img, use_column_width=True)
-    # col1.map(map_data, zoom=16, use_container_width=True) 
-    
-    st_data = st_folium(m, width=640, height=640)
-
 with col2:
     st.markdown("### Details")
     round_num = 2
@@ -203,3 +196,10 @@ with col2:
         st.markdown("### Predicted Solar Potential")
         # add suggested solar panel amount and energy produced
         st.markdown("The suggested solar panel amount is 2.")
+
+with col1:
+    st.markdown("### Satellite Image")
+    # col1.image(sat_img, use_column_width=True)
+    # col1.map(map_data, zoom=16, use_container_width=True) 
+    
+    st_data = st_folium(m, width=640, height=640)
