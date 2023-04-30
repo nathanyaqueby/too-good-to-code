@@ -146,7 +146,7 @@ st.sidebar.image("img/too good to code.png", use_column_width=True)
 if loc:
 
     # add three columns to the main page with explanations on the solar efficiency
-    col1, col2, col3 = st.columns(3, gap="medium")
+    col1, col2 = st.columns(3, gap="medium")
 
     with col1:
         st.markdown("### Satellite Image")
@@ -196,13 +196,6 @@ if loc:
         col2.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
         col2.markdown(f"🌱 Solar efficiency: 4.2/10")
         col2.markdown(f"⚡ Electric potential: {energy_produced} kwh")
-
-    with col3:
-        st.markdown("### Heatmap")
-        # plot the radiance heatmap for the city of Hamburg based on the dataframe
-        fig = px.density_mapbox(df, lat="center_lat", lon="center_long", z="radiance", radius=10, zoom=10, mapbox_style="stamen-terrain")
-        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-        st.plotly_chart(fig, use_container_width=True)
 
 
 else:  

@@ -4,6 +4,7 @@ from streamlit_extras.mention import mention
 import pandas as pd
 import numpy as np
 import pydeck as pdk
+import plotly.express as px
 
 st.set_page_config(layout="wide",
                         page_title="Solar Efficiency",
@@ -86,8 +87,8 @@ with st.sidebar.form(key='my_form'):
     # set up a slider to select the number of panels
     radius = st.slider("Select the radius", 0, 500, 200)
 
-    # set up a slider to filter the efficiency
-    efficiency = st.slider("Select the efficiency", 0.0, 1.0, 0.5, 0.01)
+    # set up a slider to adjust the zoom
+    zoom = st.slider("Adjust the zoom", 0, 100, 16)
 
     # add radio buttons to show the raster or the vector map
     map_type = st.radio("Select the map type", ("Raster", "Vector"), horizontal=True)
@@ -148,4 +149,10 @@ with st.sidebar.form(key='tech_support'):
 # st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
-create_map(radius, city)
+# load data
+df = pd.read_csv("data/final/solar_hamburg_short.csv")
+
+# plot the radiance heatmap for the city of Hamburg based on the dataframe
+fig = px.density_mapbox(df, lat="center_lat", lon="center_long", z="radiance", radius=radius, zoom=zoom, mapbox_style="stamen-terrain", height=700)
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+st.plotly_chart(fig, use_container_width=True)
