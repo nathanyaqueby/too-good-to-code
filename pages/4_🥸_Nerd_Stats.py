@@ -67,11 +67,12 @@ with col1:
     st.subheader("How many German roofs must be equipped with solar panels to substitute all of Germany's fossil energy sources?")
 
     st.markdown("""
-    Add some text here
+    According to [sources](https://www.destatis.de/EN/Themes/Economic-Sectors-Enterprises/Energy/Production/_node.html), among the 571.3 billion kWh produced, 44% are renewables while 56% are conventional.
+     This means that we have 319.928 billion kWh to substitute for.
     """)
 
     st.info("""
-        The total energy consumption of Germany in 2019 was 2,640 TWh ([Source](https://www.energy-charts.de/energy_pie.htm?year=2019&source=all-sources&period=annual&week=52&mode=relative&external=cal-external)).
+        Insert answer here
         """)
 
 with col2:
@@ -95,7 +96,7 @@ with col3:
     st.subheader("Where are the 100 buildings in Germany with the largest roofs and the best efficiency per square meter?")
 
     st.markdown("""
-    Add some text here
+    Sorting the top 100 buildings by roof size and efficiency per square meter in the datasets of Hamburg, Berlin, and Bremen, we conclude that Bremen has the most efficient buildings in average.
     """)
 
     st.info("""

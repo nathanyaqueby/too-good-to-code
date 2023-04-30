@@ -78,7 +78,7 @@ with st.sidebar.form(key='my_form'):
     # st.write("Latitude: ", lat)
     # st.write("Longitude: ", lon)
 
-    # map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
+    map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
 
     # sat_img = save_satellite_image(lat, lon)
 
@@ -129,20 +129,7 @@ with st.sidebar.form(key='tech_support'):
     if st.form_submit_button("Contact us", type="secondary", use_container_width=True):
         st.write("Submitted!")
 
-# download section
-# with st.sidebar.form(key='download'):
-#     st.title("Solar Efficiency Report")
-
-#     st.markdown("Save all the results of the solar efficiency analysis and the visualizations in a PDF file.")
-
-#     # create a submit button to download the retrained model
-#     if st.form_submit_button("Download as PDF", type="secondary", use_container_width=True):
-#         st.write("Downloaded!")
-
-# st.sidebar.markdown("---")
-# st.sidebar.markdown("Read more about the project on [GitHub](www.github.com/nathanyaqueby/too-good-to-code).")
 st.sidebar.image("img/too good to code.png", use_column_width=True)
-
 
 # add three columns to the main page with explanations on the solar efficiency
 col1, col2 = st.columns(2, gap="medium")
@@ -153,19 +140,6 @@ with col1:
     # col1.map(map_data, zoom=16, use_container_width=True) 
     
     st_data = st_folium(m, width=640, height=640)
-
-    # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
-    # col1.markdown("It is computed as follows:")
-    # col1.latex(r'''
-    #             \eta = \frac{E_{panels}}{E_{sun}}
-    #             ''')
-
-# col2.markdown("### Amount of Energy Produced")
-# col2.markdown("A function of the solar efficiency and the energy received by the sun.")
-# col2.markdown("It is computed as follows:")
-# col2.latex(r'''
-#             E_{panels} = \eta \times E_{sun}
-#             ''')
 
 with col2:
     st.markdown("### Details")
@@ -196,6 +170,12 @@ with col2:
     st.markdown(f"🌱 Solar efficiency: 4.2/10")
     st.markdown(f"⚡ Electric potential: {energy_produced} kwh")
 
+    # display the top 100 buildings with the largest roofs and best efficiency per square meter from df
+    st.markdown("---")
+    st.markdown("### Top 100 Buildings")
+    st.markdown(f"The top 100 buildings with the largest roofs and best efficiency per square meter in {province} are displayed below.")
+    st.dataframe(df[["solar_area", "energy_produced", "radiance"]].head(100), use_container_width=True, height=120)
+
     # display the last clicked location from the st_data dict
     st.markdown("---")
 
@@ -215,4 +195,3 @@ with col2:
         st.markdown("### Predicted Solar Potential")
         # add suggested solar panel amount and energy produced
         st.markdown("The suggested solar panel amount is 2.")
-        
