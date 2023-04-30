@@ -1,15 +1,11 @@
 import streamlit as st
-import streamlit.components.v1 as components
 from streamlit_extras.mention import mention
-import pandas as pd
-import numpy as np
-import pydeck as pdk
 import ee
 import geemap.foliumap as geemap
 import geopandas as gpd
 
 st.set_page_config(layout="wide",
-                        page_title="Panel Detection",
+                        page_title="Roof Detection",
                         page_icon="🏠",
                         initial_sidebar_state="expanded"
                         )

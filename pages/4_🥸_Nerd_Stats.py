@@ -1,9 +1,5 @@
 import streamlit as st
-import streamlit.components.v1 as components
 from streamlit_extras.mention import mention
-import pandas as pd
-import numpy as np
-import pydeck as pdk
 
 st.set_page_config(layout="wide",
                         page_title="Nerd Stats",

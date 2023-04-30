@@ -8,9 +8,11 @@ from shapely.geometry import Point, Polygon
 import geopandas as gpd
 import pandas as pd
 import geopy
-
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
+import plotly.express as px
+
+from preprocessing import save_satellite_image
 
 
 st.set_page_config(layout="wide",
@@ -56,6 +58,9 @@ with st.sidebar.form(key='my_form'):
     # # add radio buttons to show the raster or the vector map
     # map_type = st.radio("Select the map type", ("Raster", "Vector"), horizontal=True)
 
+    # load data
+    df = pd.read_csv("data/final/solar_hamburg_short.csv")
+
     street = st.text_input("Street", "Altenbergerstrasse 69")
     city = st.text_input("City", "Linz")
     province = st.text_input("Province", "Upper Austria")
@@ -68,7 +73,9 @@ with st.sidebar.form(key='my_form'):
     lat = location.latitude
     lon = location.longitude
 
-    map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
+    # map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
+
+    sat_img = save_satellite_image(lat, lon)
 
     # create a submit button to retrain the model
     loc = st.form_submit_button("Visualize location", type="primary", use_container_width=True)
@@ -126,32 +133,45 @@ with st.sidebar.form(key='tech_support'):
 st.sidebar.image("img/too good to code.png", use_column_width=True)
 
 if loc:
-    st.map(map_data, zoom=16, use_container_width=True) 
+    # st.map(map_data, zoom=16, use_container_width=True) 
 
     # add three columns to the main page with explanations on the solar efficiency
     col1, col2, col3 = st.columns(3, gap="medium")
 
-    col1.markdown("### Solar Efficiency")
-    col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
-    col1.markdown("It is computed as follows:")
-    col1.latex(r'''
-                \eta = \frac{E_{panels}}{E_{sun}}
-                ''')
+    col1.markdown("### Satellite Image")
+    col1.image(sat_img, use_column_width=True)
+    # col1.markdown("The ratio between the energy produced by the solar panels and the energy received by the sun.")
+    # col1.markdown("It is computed as follows:")
+    # col1.latex(r'''
+    #             \eta = \frac{E_{panels}}{E_{sun}}
+    #             ''')
     
-    col2.markdown("### Amount of Energy Produced")
-    col2.markdown("A function of the solar efficiency and the energy received by the sun.")
-    col2.markdown("It is computed as follows:")
-    col2.latex(r'''
-                E_{panels} = \eta \times E_{sun}
-                ''')
+    # col2.markdown("### Amount of Energy Produced")
+    # col2.markdown("A function of the solar efficiency and the energy received by the sun.")
+    # col2.markdown("It is computed as follows:")
+    # col2.latex(r'''
+    #             E_{panels} = \eta \times E_{sun}
+    #             ''')
     
-    col3.markdown("### Details")
+    col2.markdown("### Details")
+    # get the solar_area, energy_produced, and radiance based on the latitude and longitude
+    solar_area = df.loc[(df["center_lat"] == lat) & (df["center_long"] == lon), "solar_area"].values[0]
+    energy_produced = df.loc[(df["center_lat"] == lat) & (df["center_long"] == lon), "energy_produced"].values[0]
+    radiance = df.loc[(df["center_lat"] == lat) & (df["center_long"] == lon), "radiance"].values[0]
+
     # list the location, area (m^2), sun radiation (kwh/m^2), solar efficiency (0-10), and amount of electric potential (kwh)
-    col3.markdown("📍 Location: "+str(location.address))
-    col3.markdown("📐 Area: 38 m^2")
-    col3.markdown("☀️ Sun radiation: 1211 kwh/m^2")
-    col3.markdown("🌱 Solar efficiency: 4.2/10")
-    col3.markdown("⚡ Electric potential: 118 kwh")
+    col2.markdown("📍 Location: "+str(location.address))
+    col2.markdown(f"📐 Solar area: {solar_area} m^2")
+    col2.markdown(f"☀️ Sun radiation: {radiance} kwh/m^2")
+    col2.markdown(f"🌱 Solar efficiency: 4.2/10")
+    col2.markdown(f"⚡ Electric potential: {energy_produced} kwh")
+
+    col3.markdown("### Heatmap")
+    # plot the radiance heatmap for the city of Hamburg based on the dataframe
+    fig = px.density_mapbox(df, lat="center_lat", lon="center_long", z="radiance", radius=10, zoom=10, mapbox_style="stamen-terrain")
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    col3.plotly_chart(fig, use_container_width=True)
+
 
 else:  
     components.html("""
