@@ -5,6 +5,8 @@ def save_satellite_image(lat, long, file='pic.jpg', zoom=20):
     # Enter your api key here
     api_key = st.secrets["API_TOKEN"]
 
+    st.write(api_key)
+
     # url variable store url
     url = "https://maps.googleapis.com/maps/api/staticmap?"
 
@@ -22,5 +24,7 @@ def save_satellite_image(lat, long, file='pic.jpg', zoom=20):
     f.write(r.content)
 
     f.close()
+
+    st.image(file, use_column_width=True)
 
     return file
