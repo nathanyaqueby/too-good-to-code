@@ -66,9 +66,8 @@ with st.sidebar.form(key='my_form'):
     df_bremen = pd.read_csv("data/final/solar_bremen.csv")
 
     street = st.text_input("Street", "Rathausmarkt 1")
-    city = st.text_input("City", "Hamburg")
-    # set up a dropdown menu to select the province between Hamburg, Berlin and Bremen
-    province = st.selectbox("Select a province", ["Hamburg", "Berlin", "Bremen"], index=0)
+    # set up a dropdown menu to select the state between Hamburg, Berlin and Bremen
+    province = st.selectbox("Select a state", ["Hamburg", "Berlin", "Bremen"], index=0)
     country = st.text_input("Country", "Germany")
 
     geolocator = Nominatim(user_agent="GTA Lookup")
