@@ -88,6 +88,15 @@ with st.sidebar.form(key='my_form'):
         [lat, lon], popup="Selected location", tooltip="Selected location"
     ).add_to(m)
 
+    top_100 = df.sort_values(by=["solar_area", "radiance"], ascending=False).head(100)
+
+    # add markers to the map if user checks "Show top 100 locations"
+    if st.checkbox("Show top 100 locations"):
+        for i in range(100):
+            folium.Marker(
+                [top_100["center_lat"].iloc[i], top_100["center_long"].iloc[i]], popup="Top 100", tooltip="Top 100"
+            ).add_to(m)
+
     # create a submit button to retrain the model
     loc = st.form_submit_button("Visualize location", type="primary", use_container_width=True)
 
@@ -140,6 +149,7 @@ with col1:
     # col1.map(map_data, zoom=16, use_container_width=True) 
     
     st_data = st_folium(m, width=640, height=640)
+    
 
 with col2:
     st.markdown("### Details")
@@ -175,10 +185,9 @@ with col2:
     st.markdown("### Top 100 Buildings")
     st.markdown(f"Buildings with the largest roofs and best efficiency per square meter in {province}.")
     # get the top 100 buildings from df and display them in a table
-    top_100 = df.sort_values(by=["solar_area", "radiance"], ascending=False).head(100)
 
     # add a button to display the top 100 buildings
-    if st.button("Display top 100 buildings", type="secondary", use_container_width=True):
+    if st.checkbox("Display top 100 buildings", type="secondary", use_container_width=True):
         st.dataframe(top_100, use_container_width=True, height=120)
 
     # add the top buildings from top_100 to the map
