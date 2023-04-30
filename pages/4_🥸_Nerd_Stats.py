@@ -71,9 +71,9 @@ with col1:
      This means that we have 319.928 billion kWh to substitute for.
     """)
 
-    st.info("""
-        Insert answer here
-        """)
+    # st.info("""
+    #     Insert answer here
+    #     """)
 
 with col2:
     st.image("img/solar/5.png", use_column_width=True)
@@ -81,14 +81,14 @@ with col2:
     st.subheader("In which German regions should solar be subsidized the most?")
 
     st.markdown("""
-    Add some text here
+    After calculating the region with the most amount of sun radiation and the most amount of roofs, we conclude that the region of Berlin should be subsidized the most.
     """)
 
-    st.info("""
-        Sources of data:
-        - [Solar Atlas](https://www.solaratlas.de/)
-        - [Open Power System Data](https://data.open-power-system-data.org/time_series/)
-        """)
+    # st.info("""
+    #     Sources of data:
+    #     - [Solar Atlas](https://www.solaratlas.de/)
+    #     - [Open Power System Data](https://data.open-power-system-data.org/time_series/)
+    #     """)
     
 with col3:
     st.image("img/solar/6.png", use_column_width=True)
@@ -99,9 +99,9 @@ with col3:
     Sorting the top 100 buildings by roof size and efficiency per square meter in the datasets of Hamburg, Berlin, and Bremen, we conclude that Bremen has the most efficient buildings in average.
     """)
 
-    st.info("""
-        And some more text here ...
-        """)
+    # st.info("""
+    #     And some more text here ...
+    #     """)
 
 st.markdown("---")
 
